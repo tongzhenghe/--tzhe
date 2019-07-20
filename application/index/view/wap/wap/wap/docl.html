@@ -1,0 +1,118 @@
+{include file="../application/index/view/wap/wap/include/header.html" /}
+<style>
+    .doc-i{
+        width: 45%;
+        height: 93%;
+        padding: 2px;
+        float: left;
+        box-shadow: 0px 1px 1px rgb(208, 208, 208);
+        background: #ffffff;
+    }
+    .doc-intro{
+        width: 54%;
+        padding: 11px;
+        float:right;
+        height: 96%;
+    }
+   .sec01_con{
+       width: 100%;
+       height: 238px;
+       margin-left: 8px;
+       margin-top: 24px;
+    }
+
+   .doc-name {
+       color: #b59958;
+       font-weight: bold;
+   }
+.position{
+    font-weight: unset;
+    font-family: cursive;
+    font-size: 12px;
+}
+    .intro-1{
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .ry {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+
+    .sc p{
+        width: 42%;
+        font-size: 16px;
+        background: #b59a5b;
+        text-align: center;
+        color: #fffefe;
+        padding: 2px;
+        font-weight: 700;
+        margin-bottom: 3px;
+        border-radius: 2px;
+    }
+
+
+    .sc span {
+        font-size: 14px;
+        font-family: auto;
+        float: left;
+    }
+
+
+    .sc{
+        width: 100%;
+        height: 89px;
+        margin-bottom: 10px;
+    }
+.mo span{
+    width: 73%;
+    text-align: center;
+    background: #c1b59b;
+    font-size: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 4px;
+    line-height: 12px;
+    color: #fef9ff;
+    border-radius: 50px;
+    padding-bottom: 4px;
+}
+    .mo{
+        margin: auto;
+        width: 79%;
+        /*margin-top: 30px;*/
+    }
+    .xqzx{
+        margin-top: 30px;
+    }
+
+</style>
+<section id="sections">
+    <section class="banner">
+        <img src="http://huamei.juhuiny.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190517180751.png">
+    </section>
+    <section class="sec01">
+        {if !empty($doc)}
+        {volist name="doc" id="vo" key="k" }
+        <div class="sec01_con">
+            <div class="doc-i"><img src="{$vo.img}"></div>
+            <div class="doc-intro">
+                <ul class="int-ul">
+                    <li class="intro-1"><span class="doc-name">{$vo.name}</span><span style="font-family: monospace;">|</span><span class="position">{$vo.position}</span></li>
+                    <li class="ry">{$vo.honour}</li>
+                    <li class="sc">
+                        <p>擅长项目</p>
+                        <span>{$vo.be_expert_in} </span>
+                    </li>
+                    <li class="mo"><span><a href="{:url('/wap/doci', ['id' => $vo.id])}">了解详情</a></span></li>
+                </ul>
+            </div>
+        </div>
+        {/volist}
+        {/if}
+
+    </section>
+</section>
+<script src="/static/index/js/footer.js" ></script>

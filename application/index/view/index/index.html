@@ -1,0 +1,315 @@
+
+{include file="../application/index/view/index/include/header.html" /}
+<!--banner-->
+<div id="slideBox" class="site_banner" style="display: block; width: 100%; height: 500px; position: relative;">
+    <div class="hd">
+        <ul>
+            {if !empty($banner)}
+            {volist name="banner" id="vo" key="k" }
+            <li><span></span></li>
+            {/volist}
+            {/if}
+        </ul>
+    </div>
+    <div class="bd banner">
+        <ul>
+            {if !empty($banner)}
+            {volist name="banner" id="vo" key="k" }
+            <li style="background: url('{$vo.img}')50% 0 no-repeat; "><a href="{$vo.out_url}" target="_blank"></a></li>
+            {/volist}
+            {/if}
+        </ul>
+    </div>
+    <a class="prev" href="javascript:void(0)"></a><a class="next" href="javascript:void(0)"></a>
+</div>
+
+<script>
+    jQuery(".site_banner").slide({mainCell:".bd ul",autoPlay:true, delayTime: 500});
+</script>
+<div class="main_bg">
+    <div class="main">
+        <!--动态-->
+        <div class="box">
+            <div class="box_title">
+                <span>最新专题</span>
+            </div>
+            <div class="box_con">
+                <div class="hd">
+                    <ul>
+                        {if !empty($new_jt)}
+                        {volist name="new_jt" id="vo" key="k" }
+                        <li><span></span></li>
+                        {/volist}
+                        {/if}
+                    </ul>
+                </div>
+                <div class="imgAuto"> <!--style="margin:0;padding:0;"-->
+                    <ul>
+                        {if !empty($new_jt)}
+                        {volist name="new_jt" id="vo" key="k" }
+                        <li style="position: absolute; left: 0px; right: 0px; margin: auto; background: url({$vo.img}) 50% 0% no-repeat; width: 100%; background-size:100% 100%; height: 383px;" mz="{$vo.img}" >
+                            <a href="{if !empty($vo.out_url)}{$vo.out_url}{else}{:url('/index/subi', ['id' => $vo.id])}{/if}" style="text-decoration:none;display:block;width:100%;height:396px;" target="_self">&nbsp;</a>
+                        </li>
+                        {/volist}
+                        {/if}
+                    </ul>
+                </div>
+                <script>jQuery(".box_con").slide({mainCell:".imgAuto ul",autoPlay:true, delayTime: 500});</script>
+
+
+                <!--新闻动态-->
+                <div class="dongtai">
+                    <div class="bd">
+                        <div class="ulWrap">
+                            <ul>
+                                {if !empty($new_news)}
+                                {volist name="new_news" id="vo" key="k" }
+                                <li>
+                                    <a href="{:url('/index/newsi', ['id'=> $vo.id])}">
+                                        <img src="{$vo.icon}" alt="{$vo.name}" width="223" height="124">
+                                        <p class="dt_title">{$vo.name}</p>
+                                    </a>
+                                </li>
+                                {/volist}
+                                {/if}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--新闻动态End-->
+            </div>
+        </div>
+        <!--动态结束-->
+
+        <!--活动-->
+        {if !empty($tj_activity)}
+
+        <div class="home_xbanner">
+            <div class="hd">
+                <ul>
+                    {volist name="tj_activity" id="vo" key="k" }
+                    <li><span></span></li>
+                    {/volist}
+                </ul>
+            </div>
+            <div class="bd">
+                <ul class="picmycss pic_s536" style="margin:0;padding:0;">
+                    {volist name="tj_activity" id="vo" key="k" }
+                    <li  style="position: absolute; left: 0px; right: 0px;margin: auto; background: url({$vo.img}) 50% 0 no-repeat; background-size: 100% 100%;" mz="{$vo.name}"><a href="javascript:;" style="text-decoration:none;display:block;width:100%;height:100px;" target="_self">&nbsp;</a></li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+        <script>jQuery(".home_xbanner").slide({mainCell:".bd ul",autoPlay:true, delayTime: 500});</script>
+        {/if}
+        <!--活动-END-->
+
+        <!--真人案例-->
+        <div class="box">
+          <div class="case">
+            <div id="slideBox" class="slideBox">
+              <div class="bd">
+                <ul>
+                    <li style="float: left; width: 1139px;">
+                        <img src="/static/index/pc/pctestImg/anli1.jpg" style="width: 100%; display: block;">
+                        <div class="anli_video" style="position: absolute; bottom: 59px;  width: 14%; margin: auto; left: 35%;">
+                            <video src="http://huamei.juhuiny.com/003rz0qflx07tpK0ERG00104120017QK0E010.mp4" poster="/static/index/pc/pctestImg/video1.jpg" width="420" height="326" controls=""></video>
+                        </div>
+                        <a href="/swt/" target="_blank"></a>
+                    </li>
+                </ul>
+              </div>
+              <div class="cate_btn">
+                <a class="prev" href="javascript:void(0)"></a>
+                <a class="next" href="javascript:void(0)"></a>
+              </div>
+            </div>
+            <script>jQuery(".slideBox").slide({mainCell: ".bd ul", effect: "leftLoop", trigger: "click", delayTime: 500});</script>
+          </div>
+        </div>
+        <!--真人案例结束-->
+
+        <!--本院专家-->
+        <div class="box">
+
+            <div class="doctor">
+                <section class="zjBoxs wPub">
+                    <div class="zjTit clearfix"><h3 class="fl">华美专家&&安全保障</h3></div>
+
+                    <div class="zjContent relative">
+
+                        <div class="zjlists">
+
+                            <div class="zjlist relative"> <img src="http://huamei.juhuiny.com/%E9%99%A2%E9%95%BF.jpg" />
+                                <div class="zjTxt absolute">
+                                    <h3>杨艳</h3>
+                                    <div class="zjzc">
+                                        <h4>酒泉华美医疗美容医院 -- 院长</h4>
+                                    </div>
+                                    <div class="zjbm">
+                                        <h5>杨艳，酒泉华美医疗整形美容医院院长，酒泉市杨艳整形爱心基金会会长。国内知名整形美容医师、中国中华医学会会员。她从事外科美容工作多年，经验丰富，技术精湛。</h5>
+                                        <h5>擅长项目：擅长多部位医美塑型， 精通仿真卧蚕祛眼袋、全面部微雕塑形、自体细胞抗衰老手术失败修复等整形手术。</h5>
+                                    </div>
+                                    <a href="javascript:;" class="iBlock boxIndex">查看更多</a> </div>
+                            </div>
+
+                           <div class="zjlist relative"> <img src="http://huamei.juhuiny.com/%E7%94%B3%E5%BF%97%E5%8B%87big.jpg" />
+                                <div class="zjTxt absolute">
+                                    <h3>申智勇</h3>
+                                    <div class="zjzc">
+                                        <h4>酒泉华美医疗美容医院 -- 外科医师主任</h4>
+                                    </div>
+                                    <div class="zjbm">
+                                        <h5>申志勇医生毕业于南华大学临床医学专业，从事医疗美容工作十余年，擅长各种美容整形手术，尤其在面部五官精雕方面造诣突出。他的手术以自然个性美著称，注重形质、气韵、精细化雕琢，将艺术审美与医疗技术精致融合，打造精致动人的面部轮廓。</h5>
+                                        <h5>擅长项目：无痕双眼皮、韩式去眼袋、眼部综合整形、鼻综合隆鼻、自体脂肪隆胸、注射美容、吸脂及面部轮廓精雕等。</h5>
+                                    </div>
+                                    <a href="javascript:;" class="iBlock boxIndex">查看更多</a> </div>
+                            </div>
+
+                            <div class="zjlist relative">
+                                <img src="http://huamei.juhuiny.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190616155809.jpg" />
+                                <div class="zjTxt absolute">
+                                    <h3>王任平</h3>
+                                    <div class="zjzc">
+                                        <h4>酒泉华美医疗美容医院 -- 皮肤科医师主任</h4>
+                                    </div>
+                                    <div class="zjbm">
+                                        <h5>王任平皮肤科主治医师，师从北京皮研所沈教授，湖南省人民医院皮肤科及湖南省皮肤病研究所进修学习</h5>
+                                        <h5>擅长项目：皮肤诊疗、疤痕修复、妊娠纹修复。</h5>
+                                    </div>
+                                    <a href="/" class="iBlock boxIndex">查看更多</a> </div>
+                            </div>
+
+
+                           <div class="zjlist relative">
+                                <img src="http://huamei.juhuiny.com/毛林1.jpg" />
+                                <div class="zjTxt absolute">
+                                    <h3>毛林</h3>
+                                    <div class="zjzc">
+                                        <h4>酒泉华美医疗美容医院 -- 名誉院长</h4>
+                                    </div>
+
+                                    毛林，酒泉华美整形医院名誉院长，副主任医师，武汉绎君整形美容医院整形外科主任。
+
+
+
+                                    <div class="zjbm">
+                                        <h5>从事医疗美容工作20多年，据酒泉华美整形官网数据显示，毛院长自从业以来，共完场各种整形美容案例上万例，且无一失败案例， 他精湛的技艺和高尚的医德，被业界誉为“美容圣手、中国少壮派整形医生”！。</h5>
+                                        <h5> 面部整形：韩式双眼皮、开眼角、隆鼻、耳鼻再造、改脸型、面部年轻化手术。</h5>
+                                    </div>
+                                    <a href="/" class="iBlock boxIndex">查看更多</a> </div>
+                            </div>
+
+                              <div class="zjlist relative">
+                                <img src="http://huamei.juhuiny.com/黄江泊.jpg" />
+                                <div class="zjTxt absolute">
+                                    <h3>黄江泊</h3>
+                                    <div class="zjzc">
+                                        <h4>酒泉华美医疗美容医院 -- 外科主任医师</h4>
+                                    </div>
+                                    <div class="zjbm">
+                                        <h5>从事外科整形工作十余年，经验丰富，技术精湛、审美理念时尚新颖。师从龙道筹、罗定安等知名美容医生，曾在省人民医院进修，并同国内外多名整形美容大师同台手术，分享学术研究。</h5>
+                                        <h5>擅长项目：假体丰胸、吸脂术、无痕重睑术、自体脂肪隆胸、五官塑形、华美纯臻美鼻、蒂凡尼欧式美鼻、3D内窥镜丰胸、抗衰除皱等。</h5>
+                                    </div>
+                                    <a href="/" class="iBlock boxIndex">查看更多</a> </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zjhd absolute">
+
+                            <div class="zjtabBd">
+
+                                <li class="zjcicle relative"> <img src="http://huamei.juhuiny.com/yangyan1.jpg" /></li>
+                                <li class="zjcicle relative"> <img src="http://huamei.juhuiny.com/%E7%94%B3%E6%99%BA%E5%8B%87small.jpg" /></li>
+                                <li class="zjcicle relative"> <img src="http://huamei.juhuiny.com/%E6%9C%AA%E6%A0%87%E9%A2%98-1jsm.jpg" /></li>
+                                <li class="zjcicle relative"> <img src="http://huamei.juhuiny.com/1.jpg" /></li>
+                                <li class="zjcicle relative"> <img src="http://huamei.juhuiny.com/黄江波1.jpg" /></li>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+        <!--本院专家结束-->
+        <!--大事记-->
+        <div class="box">
+            <div class="dsj_Box">
+                <div class="hd">
+                    <ul>
+                        <li class="on">
+                            关注华美<br/>
+                            <span>Following us</span>
+                        </li>
+                        {if !empty($note)}
+                        {volist name="note" id="vo" key="k" }
+                        <li>{$vo.name}
+                            <br>
+                            <span>{$vo.alias_name}</span></li>
+                        {/volist}
+                        {/if}
+                    </ul>
+                </div>
+
+                <div class="tempWrap" style="overflow:hidden; position:relative; width:100%">
+                    <div class="bd" style="width: 7200px; left: 0px; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
+
+                        <ul style="float: left; width: 1232px;">
+                            <li style="    height: 438px;width: 379px;">
+                                <img src="http://huamei.juhuiny.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190707183417.jpg">
+                                <!--<p>简介</p>-->
+                            </li>
+                            <li style="      height: 438px;  width: 379px;">
+                                <iframe width="366" height="467" class="share_self"  src="https://m.weibo.cn/p/1005057096962212/home?from=page_100505_profile&from=page_100505_profile&wvr=6&wvr=6&mod=data&mod=data&is_hot=1&is_hot=1&jumpfrom=weibocom#_loginLayer_1562483127177&language=&amp;width=366&amp;height=467&amp;fansRow=1&amp;ptype=1&amp;speed=0&amp;skin=1&amp;isTitle=1&amp;noborder=1&amp;isWeibo=1&amp;isFans=1&amp;uid=6011666172&amp;verifier=0e02ff6c&amp;dpc=1"></iframe>
+                            </li>
+                            <li style="       height: 438px; width: 379px;">
+                                <img src="http://huamei.juhuiny.com/wechat80057.jpg">
+                            </li>
+                        </ul>
+
+                        {if !empty($note)}
+                        {volist name="note" id="vo" key="k" }
+
+                        <ul style="float: left; width: 1232px;">
+                            {if !empty($vo.img)}
+                            {volist name="vo.img" id="vd" key="k" }
+                              <li>
+                                <img src="{$vd}">
+                                  <!--<p>简介</p>-->
+                                  <div></div>
+                              </li>
+                            {/volist}
+                            {/if}
+                        </ul>
+
+                        {/volist}
+                        {/if}
+                    </div>
+                </div>
+            </div>
+            <script>
+                jQuery(".dsj_Box").slide({
+                effect: "left",
+                easing: "easeOutCirc",
+                delayTime: 700
+            });
+            </script>
+        </div>
+    </div>
+</div>
+    <div class="bg-banner">
+        <div class="g_w">
+            <p><img src="/favicon.ico"></p>
+
+            <h1>华于形 . 美于心</h1>
+            <h2>酒泉华美医疗美容医院</h2>
+            <a href="/index/about" class="learn_more">关于我们</a>
+        </div>
+    </div>
+    {include file="../application/index/view/index/include/footer.html" /}

@@ -1,0 +1,43 @@
+<div class="layui-side" kit-side="true">
+    <div class="layui-side-scroll">
+        <div id="menu-box"><!--layui-show-->
+            <ul class="kit-menu">
+
+                {if !empty($menu)}
+                {volist name="menu" id="v" key="k" }
+                <li class="kit-menu-item">
+                    <a href="{$v.path}">
+                        <i class="layui-icon"></i>
+                        <span>{$v.name}</span>
+                    </a>
+                    {if !empty($v.children)}
+                    <ul class="kit-menu-child layui-anim layui-anim-upbit">
+                        {volist name="v.children" id="vc" key="kc" }
+                        <li class="kit-menu-item">
+                            <a href="{$vc.path}">
+                                <i class="layui-icon"></i>
+                                <span>{$vc.name}</span>
+                            </a>
+                            {if !empty($vc.children)}
+                            <ul class="kit-menu-child layui-anim layui-anim-upbit">
+                                {volist name="vc.children" id="vs" key="ks" }
+                                <li class="kit-menu-item">
+                                    <a href="{$vs.path}">
+                                        <i class="layui-icon">&#xe62e;</i>
+                                        <span>{$vs.name}</span>
+                                    </a>
+                                </li>
+                                {/volist}
+                            </ul>
+                            {/if}
+                        </li>
+                        {/volist}
+                    </ul>
+                    {/if}
+                </li>
+                {/volist}
+                {/if}
+            </ul>
+        </div>
+    </div>
+</div>

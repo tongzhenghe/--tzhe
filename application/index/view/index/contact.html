@@ -1,0 +1,99 @@
+{include file="../application/index/view/index/include/contact_header.html" /}
+
+<div class="cate">
+    {include file="../application/index/view/index/include/left.html" /}
+    <div class="cate_right">
+        <div class="cate_url">您的位置：<a href="/">首页</a>> <a href="{:url('/index/contact')}">联系我们</a></div>
+        <div class="mx_title"><img src="/static/index/pc/icon/contact_icon.jpg" /></div>
+        <div class="lx_div">
+            <a class="lx_a1">
+                <img src="/static/index/pc/icon/tel_icon.png" />
+                <h4>拨打电话</h4>
+                {if !empty($contact.tel)}
+                <p>咨询：
+                    {volist name="contact.tel" id="vo" key="k" }
+                    {$vo}
+                    {/volist}
+                </p>
+                {/if}
+            </a>
+            <a class="lx_a2">
+                <img src="/static/index/pc/icon/email_icon.png" />
+                <h4>应聘</h4>
+                <p>招聘邮箱：{$contact.recruit->recruit_email}<br />
+                    联系方式：{$contact.recruit->recruit_phone} <br />
+                    面试地址：{$contact.recruit->recruit_address}<br />
+                </p>
+            </a>
+            <a class="lx_a3">
+                <img src="/static/index/pc/icon/add_icon.png" />
+                <h4>地址</h4>
+                <p>{$contact.address}</p>
+            </a>
+
+            <a class="lx_a4">
+                <img src="/static/index/pc/icon/bus_icon.png" />
+                <h4>自驾</h4>
+                <p><br />
+                    酒泉鼓楼向东行驶至东关十字公交站<br />
+                    中国银行对面</p>
+            </a>
+            <a class="lx_a5">
+                <img src="/static/index/pc/icon/bus2_icon.png" />
+                <h4>公交</h4>
+                    {if !empty($contact.bus)}
+                    {volist name="contact.bus" id="vo" key="k" }
+                      <p>{$vo}</p>
+                    {/volist}
+                    {/if}
+            </a>
+        </div>
+
+        <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+
+
+        <div class="map_div">
+            <p class="ab_one_title">在线地图<span> /Online Map</span></p>
+
+            <div class="lx_map_div" id="dituContent" >
+                {include file="../application/index/view/index/include/map.html" /}
+            </div>
+            <a href="javascript:;" class="lxwm_a">更多路线问题 点击在线咨询</a>
+        </div>
+    </div>
+</div>
+
+
+<!--<script type="text/javascript"src="http://cbjs.baidu.com/js/m.js"></script>-->
+
+
+<!--<div id="TC" class="talkhome"  style="display:none; _position:absolute; _right:0; _top: expression(documentElement.scrollTop + documentElement.clientHeight/3)">-->
+    <!--<div  style="display:block; width:660px;height:450px;position: relative;"><script>wpup("71")</script></div>-->
+    <!--<span><a id="closehome" class="close" href="Javascript:void(0);" onclick="closewin();return false;" target="_self">关闭</a></span>-->
+    <!--<a class="right"  target="_blank" href="javascript:void(0)" onclick="swtopen(this.title)" onmousedown="this.target='_self';" title="center"   rel="nofollow" >打开</a>-->
+<!--</div>-->
+
+<!--<script charset="utf-8" src="http://lxbjs.baidu.com/api/asset/api.js?t=' + new Date().getTime() + '" data-lxb-gid="42403" data-lxb-uid="2360068" type="text/javascript"></script>-->
+<!--<div class="swt-right" id="swt-right">-->
+    <!--<ul>-->
+        <!--<li class="swt-right1"><a href="javascript:void(0)" onclick="swtopen(this.title)" target="_self" title=""></a></li>-->
+        <!--<li class="swt-right2"><a href="javascript:void(0)" onclick="swtopen(this.title)" target="_self" title=""></a></li>-->
+        <!--<li class="swt-right3"><a href="javascript:void(0)" onclick="swtopen(this.title)" target="_self" title=""></a></li>-->
+        <!--<li class="swt-right4"><a href="#" target="_blank" id="swt-right4a"></a></li>-->
+        <!--<li class="swt-right6" style="top:235px"><a href="javascript:scroll(0,0);"></a></li>-->
+    <!--</ul>-->
+<!--</div>-->
+<!--<div class="weixin_ewmzx" id="weixin_ewmzx" style=" width:200px; height:200px; position:fixed; top:177px; right:50px; display:none; z-index:100;"><img src="/static/index/pc/pctestImg/wxewm_zx1[1].jpg" /></div>-->
+<!--<script>-->
+    <!--document.getElementById("swt-right4a").onmouseover=function(){-->
+        <!--document.getElementById("weixin_ewmzx").style.display="block";-->
+    <!--};-->
+    <!--document.getElementById("swt-right4a").onmouseout=function(){-->
+        <!--document.getElementById("weixin_ewmzx").style.display="none";-->
+    <!--};-->
+    <!--document.getElementById("callBtn").onclick = function () {-->
+        <!--lxb.call(document.getElementById("telInput"));-->
+    <!--};-->
+<!--</script>-->
+
+{include file="../application/index/view/index/include/footer.html" /}

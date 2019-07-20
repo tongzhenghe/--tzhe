@@ -1,0 +1,68 @@
+<!-- 模板 -->
+<div class="layui-fluid">
+  <div class="layui-row">
+      <div class="layui-card">
+        <div class="layui-card-header">
+            <span class="layui-breadcrumb">
+              <i>当前位置：</i>
+            <a href="/">首页</a>
+            <a href="#/website/keywords_link">列表</a>
+            <a><cite>添加超链接</cite></a>
+          </span>
+        </div>
+        <div class="layui-card-body">
+          <form class="layui-form" action="##" onsubmit="return false" >
+
+              <div class="layui-form-item">
+                  <div class="layui-inline">
+                      <label class="layui-form-label">关联词</label>
+                      <div class="layui-input-inline">
+                          <input autocomplete="off" name="re_keywords" class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-inline">
+                      <button class="layui-btn layui-btn-xs layui-btn-self" id="addKeywords">添加</button>
+                  </div>
+                  <div class="layui-inline">
+                      <div class="layui-inline layui-word-aux">提示：支持添加多个客服。</div>
+                  </div>
+                  <div class="layui-inline">
+                      <div class="layui-form-mid layui-word-aux"></div>
+                  </div>
+                  <div class="layui-form-item">
+                      <div class="layui-inline beDemo-k">
+                          <label class="layui-form-label"></label>
+                          {if !empty($row.re_keywords)}
+                          {volist name="row.re_keywords" id="v"}
+                          <span class="layui-self">{$v}</span><a href="javascript:;"><i class="is">x</i></a>
+                          {/volist}
+                          {/if}
+                      </div>
+                  </div>
+              </div>
+
+           <div class="layui-form-item">
+              <label class="layui-form-label">超链接</label>
+              <div class="layui-input-block">
+                <input type="text" name="link" value="{if !empty($row.link)}{$row.link}{/if}" placeholder="菜单链接" autocomplete="off" class="layui-input">
+                  <p class="layui-word-aux">注意：此项必填。</p>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                  <input type="hidden" name="requestUrl"  value="{:url('addkeywords_link')}">
+                  <input type="hidden" name="id"  value="{if !empty($row.id)}{$row.id}{/if}">
+                <button class="layui-btn xxx" lay-submit lay-filter="formKeywords_link">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <a href="#/website/keywords_link" class="layui-btn layui-btn-primary">返回列表</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>
+<!-- 脚本 -->
+{js href='/static/admin/layui_rely.js'}
+{include file="include/submit" /}

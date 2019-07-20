@@ -1,0 +1,39 @@
+{include file="../application/index/view/wap/wap/include/header.html" /}
+<div id="index_hm_text">
+    <label class="con1_bt">{$data.name}</label>
+    <i>发布时间：{$data.time}</i>
+    <center class="doc-img">
+        <img src="{$data.img}" width="228" height="250"/>
+    </center>
+    <label class="con1_nr" style="text-align: left;" id="intro">
+        <p class="p"> 简&nbsp;&nbsp;&nbsp;&nbsp;介：</p>
+        {if !empty($data.intro)}{$data.intro}{/if}
+    </label>
+    <label class="con1_nr" style="text-align: left;">
+        <p class="p"> 荣&nbsp;&nbsp;&nbsp;&nbsp;誉：</p>
+        {if !empty($data.honour)}{$data.honour}{/if}
+    </label>
+
+     <label class="con1_nr" style="text-align: left;">
+        <p class="p"> 擅长项目：</p>
+         {if !empty($data.be_expert_in)}
+         {volist name="data.be_expert_in" id="v" key="k" }
+         <span style="border-radius: 2px;font-size: 15px; color: #988565;"> |{$v}</span>
+         {/volist}
+         {/if}
+    </label>
+
+    <label class="con1_nr" id="con1_id">
+        {$data.content}
+    </label>
+    <hr>
+    <label class="con1_ll">其他人还浏览了...</label>
+    <div class="con1_fxlx doc-li">
+        {if !empty($doc)}
+        {volist name="doc" id="vo" key="k" }
+            <a href="{:url('/wap/doci', ['id' => $vo.id])}">{$vo.name}</a>
+            {/volist}
+        {/if}
+    </div>
+</div>
+<script src="/static/index/js/footer.js" ></script>

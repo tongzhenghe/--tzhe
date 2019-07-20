@@ -1,0 +1,47 @@
+{include file="../application/index/view/wap/wap/include/act_header.html" /}
+<body>
+    <div class="box">
+        <div class="box_xm">
+            <h2 class="category-title left-icon hot">
+                <span class="category-name">热门</span>
+            </h2>
+            <ul class="sub-category-list">
+                {if !empty($cate)}
+                {volist name="cate" id="vo" key="k" }
+                {if !empty($vo.children)}
+                {volist name="vo.children" id="vc" key="kc" }
+                {if $vc.is_hot == 1}
+                <li class="sub-category">
+                    <a class="content-wrap" href="{:url('/wap/prol', ['cateid' => $vc.id])}">
+                       {$vc.name}
+                    </a>
+                </li>
+                {/if}
+                {/volist}
+                {/if}
+                {/volist}
+                {/if}
+            </ul>
+        </div>
+
+        {if !empty($cate)}
+        {volist name="cate" id="vo" key="k" }
+        <h2 class="category-title left-icon yan" {if !empty($vo.icon)} style=" display: block; background-image: url('{$vo.icon}'); background-position-y: 3px;"{/if}>
+            <span class="category-name">{$vo.name}</span>
+        </h2>
+        <ul class="sub-category-list">
+            {if !empty($vo.children)}
+            {volist name="vo.children" id="vc" key="kc" }
+            <li class="sub-category">
+                <a class="content-wrap" href="{:url('/wap/prol', ['cateid' => $vc.id])}" >
+                    {$vc.name}
+                    {if $vc.is_hot ==1 }<img src="/static/index/icon/hott.gif" class="hot_gif">{/if}
+                </a>
+            </li>
+            {/volist}
+            {/if}
+        </ul>
+        {/volist}
+        {/if}
+    </div>
+<script src="/static/index/js/footer.js" ></script>

@@ -1,0 +1,226 @@
+{include file="../application/index/view/index/include/contact_header.html" /}
+<script src="{__JS_PATH}/slider/jssor.core.js" type="text/javascript"></script>
+<style>
+    body{background: url(/static/index/pc/icon/about_bg.jpg) center no-repeat;background-position-y: 131px;}
+
+    .sec01 {
+        width: 100%;
+        height: 427px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .y_con {
+        width: 100%;
+        height: 920px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .about_con h1 {
+        font-family: "Times New Roman";
+        font-size: 56px;
+        color: #000;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 42px;
+    }
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    .about_con h2 {
+        width: 110px;
+        height: 69px;
+        margin: 0 auto;
+        margin-top: 24px;
+        margin-bottom: 10px;
+    }
+
+
+    .sec03 {
+        width: 100%;
+        height: 1014px;
+        background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559642246249&di=a6dba9d77a2a008ef98b40708789d90f&imgtype=0&src=http%3A%2F%2Fatt.aluntan.com%2Fforum%2F201805%2F03%2F105922mxoztmztqjo4tsi4.png)  no-repeat center;
+        position: relative;
+        overflow: hidden;
+        background-position-y: 260px;
+    }
+    .zj_t h1 {
+        font-size: 56px;
+        color: #000;
+        font-weight: bolder;
+        text-align: center;
+        padding-top: 38px;
+        text-transform: uppercase;
+    }
+    .zj_t h2 {
+        width: 111px;
+        height: 57px;
+        margin: 0 auto;
+        background: url(http://cdpzpc.qyestar.com/statics/images/yyjj_images/azj_h2.png) center no-repeat;
+        margin-top: 24px;
+        margin-bottom: 28px;
+    }
+    .zj_t h3 {
+        width: 655px;
+        height: 73px;
+        margin: 0 auto;
+        background: url(http://huamei.juhuiny.com/zj_p.png) center no-repeat;
+    }
+    .sec04 {
+        width: 100%;
+        height: 920px;
+        background: #fff;
+        position: relative;
+    }
+    .jd_t h1 {
+        font-size: 56px;
+        color: #000;
+        text-transform: uppercase;
+        font-weight: bolder;
+        text-align: center;
+        padding-top: 102px;
+    }
+    .jd_t h2 {
+        font-size: 28px;
+        color: #000;
+        text-align: center;
+        font-family: Microsoft Yahei;
+        margin-top: 28px;
+        font-weight: normal;
+    }
+    .jd_slide {
+        width: 1100px;
+        height: 480px;
+        margin: 64px auto;
+        position: relative;
+    }
+    .jd_slide .bd {
+        margin-left: 34px;
+    }
+    .jd_slide .prev {
+        position: absolute;
+        top: 45%;
+        left: 0px;
+        background: url(http://cdpzpc.qyestar.com/statics/images/yyjj_images/sb_arrow.jpg) no-repeat;
+    }
+    .jd_slide .prev, .jd_slide .next {
+        display: block;
+        width: 24px;
+        height: 72px;
+    }
+    .jd_slide .next {
+        position: absolute;
+        top: 45%;
+        right: 0px;
+        background: url(http://cdpzpc.qyestar.com/statics/images/yyjj_images/sb_arrow.jpg) 0 -72px no-repeat;
+    }
+    .jd_slide .prev, .jd_slide .next {
+        display: block;
+        width: 24px;
+        height: 72px;
+    }
+    .jd_pic {
+        width: 288px;
+        height: 473px;
+        border: 1px solid #8c8c8c;
+        background: #cccccc;
+    }
+    .jd_slide .bd ul li {
+        margin: 0 28px;
+        float: left;
+        _display: inline;
+        overflow: hidden;
+        text-align: center;
+    }
+    /* 本例子css */
+    .picMarquee-left{ overflow:hidden; position:relative; }
+    .picMarquee-left .hd{ overflow:hidden;  height:30px; background:#f4f4f4; padding:0 10px;  }
+    .picMarquee-left .hd .prev,.picMarquee-left .hd .next{ display:block;  width:5px; height:9px; float:right; margin-right:5px; margin-top:10px;  overflow:hidden;cursor:pointer; background:url("/static/index/pc/icon/arrow.png") no-repeat;}
+    .picMarquee-left .hd .next{ background-position:0 -50px;  }
+    .picMarquee-left .hd .prevStop{ background-position:-60px 0; }
+    .picMarquee-left .hd .nextStop{ background-position:-60px -50px; }
+    .picMarquee-left .bd{ padding:10px;   }
+    .picMarquee-left .bd ul{ overflow:hidden; zoom:1; }
+    .picMarquee-left .bd ul li{ margin-right: 42px; float:left; _display:inline; overflow:hidden; text-align:center; border: 1px solid #444444; border-radius: 3px;}
+    .picMarquee-left .bd ul li .pic{ text-align:center; }
+    .picMarquee-left .bd ul li .pic img{width: 100%;height: 439px;display: block;padding: 0px;}
+    .picMarquee-left .bd ul li .pic a:hover img{ border-color:#999;  }
+    .picMarquee-left .bd ul li .title{ line-height:46px; text-align: center; height: 100%;  background: #cccccc; width: 100%; font-size: 15px;   }
+</style>
+<div class="cate">
+    {include file="../application/index/view/index/include/left.html" /}
+    <div class="cate_right">
+        <div class="cate_url">
+            您的位置：<a href="/">首页</a>	><a href="/about/">走近华美</a> > <a href="/about/Machine/">先进设备</a>
+        </div>
+        <div class="mod18">
+            <div id="picBox" class="picBox">
+                <div class="intro">
+                    <div class="sec01" id="sec01">
+                        <div class="about_con y_con">
+                            <h1 class="w_oh fadeInDown" style="visibility: visible; animation-name: fadeInDown;">about huamei</h1>
+                            <h2 class="w_oh fadeInUp" style="visibility: visible; animation-name: fadeInUp;"></h2>
+                            <p class="w_oh fadeInRight" style="font-size: 14px;width: 100%; margin: 20px auto 0px;letter-spacing: 7px; visibility: visible; animation-name: fadeInRight;">
+                                {if !empty($data.intro)}{$data.intro}{/if}
+                            </p>
+                        </div>
+                        <div class="down_arrow"><a href="#sec02" target="_self"></a></div>
+                    </div>
+                    <div class="sec03" id="sec03">
+                        <div class="zj_team y_con">
+                            <div class="zj_t">
+                                <h1>Expert team</h1>
+                                <h2></h2>
+                                <h3></h3>
+                            </div>
+                        </div>
+                        <div class="down_arrow"><a href="/swt/"></a></div>
+                    </div>
+                    <div class="sec04" id="sec04">
+
+                        <div class="jd_sb y_con">
+                            <div class="jd_t">
+                                <h1>Advanced  Equipment</h1>
+                                <h2>先进设备</h2>
+                            </div>
+                            <div class="jd_slide">
+                                <div class="picMarquee-left">
+                                    <div class="hd">
+                                        <a class="next"></a>
+                                        <a class="prev"></a>
+                                    </div>
+                                    <div class="bd">
+                                        <div class="tempWrap" style="overflow:hidden; position:relative; width:426px">
+                                            <ul class="picList">
+                                                {if !empty($machine)}
+                                                {volist name="machine" id="vo" key="k" }
+                                                <li class="clone" style="float: left; width: 290px;">
+                                                    <div class="pic"><a href="{:url('/index/machine', ['id' => $vo.id])}" target="_blank"><img src="{$vo.img}"></a></div>
+                                                    <div class="title"><a href="{:url('/index/machine', ['id' => $vo.id])}" target="_blank">{$vo.name}</a></div>
+                                                </li>  <li class="clone" style="float: left; width: 290px;">
+                                                <div class="pic"><a href="{:url('/index/machine', ['id' => $vo.id])}" target="_blank"><img src="{$vo.img}"></a></div>
+                                                <div class="title"><a href="{:url('/index/machine', ['id' => $vo.id])}" target="_blank">{$vo.name}</a></div>
+                                            </li>  <li class="clone" style="float: left; width: 290px;">
+                                                <div class="pic"><a href="{:url('/index/machine', ['id' => $vo.id])}" target="_blank"><img src="{$vo.img}"></a></div>
+                                                <div class="title"><a href="{:url('/index/machine', ['id' => $vo.id])}" target="_blank">{$vo.name}</a></div>
+                                            </li>
+                                                {/volist}
+                                                {/if}
+                                            </ul></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            jQuery(".picMarquee-left").slide({mainCell:".bd ul",autoPlay:true,effect:"leftMarquee",vis:3,interTime:25,trigger:"click"});
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="../application/index/view/index/include/footer.html" /}

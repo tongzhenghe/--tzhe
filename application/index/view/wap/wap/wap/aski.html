@@ -1,0 +1,25 @@
+{include file="../application/index/view/wap/wap/include/header.html" /}
+<div id="index_hm_text">
+    <label class="con1_bt">{$data.name}</label>
+    <div class="tim"><i style="">发布时间：{$data.time}</i></div>
+    <label class="con1_nr" style="    text-align: left;" id="intro">
+      {$data.intro}
+    </label>
+    <label class="con1_nr" id="con1_id">
+        {$data.content}
+    </label>
+    <hr>
+    <label class="con1_ll">其他人还浏览了...</label>
+    <div class="con1_fxlx">
+        <ul>
+            {if !empty($ask)}
+            <?php $i=1;?>
+            {volist name="ask" id="vo" key="k" }
+            <a href="{:url('/wap/aski',['id' => $vo.id])}"><li><i>{$i}、</i>{$vo.name}<i style="float: right;"><?=timeTran($vo['time']);?></i></li></a>
+            <?php $i++;?>
+            {/volist}
+            {/if}
+        </ul>
+    </div>
+</div>
+<script src="/static/index/js/footer.js" ></script>

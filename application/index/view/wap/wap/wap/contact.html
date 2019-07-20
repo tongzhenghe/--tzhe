@@ -1,0 +1,87 @@
+{include file="../application/index/view/wap/wap/include/header.html" /}
+<div class="categoryMenu main">
+    <ul class="Menu">
+        <li class="Menu1"><a href="/index/wap/index">首页</a></li>
+        <li class="Menu2"><a href="{:url('wap/about_us')}">华美品牌</a></li>
+        <li class="Menu3"><a href="{:url('wap/project')}">项目</a></li>
+        <li class="Menu4"><a href="{:url('wap/docl')}">专家</a></li>
+        <li class="Menu5"><a href="{:url('wap/real_showl')}">案例</a></li>
+        <li class="Menu6"><a href="{:url('wap/contact')}">来院路线</a></li>
+    </ul>
+</div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #allmap{width:100%;height:200px;}
+        p{margin-left:1px; font-size:14px;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xAPZt5bLlso1HUOgtZxoKo4Y4SGZeiix"></script>
+    <title>酒泉华美医疗美容医院</title>
+</head>
+<body>
+<div id="allmap"></div>
+</body>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(98.525093,39.750313);
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    map.centerAndZoom(point, 15);
+    var opts = {
+        width : 200,     // 信息窗口宽度
+        height: 500,     // 信息窗口高度
+        title : "酒泉华美医疗美容医院" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        // message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+    };
+    var infoWindow = new BMap.InfoWindow("<p style='font-size: 12px'>地址：甘肃省酒泉市肃州区东大街90号。 </p><p style='font-size: 12px'>联系我们：<a href='tel://0937-2620655' style='color: #a70000;'>0937-2620655</p>", opts);  // 创建信息窗口对象
+    // marker.addEventListener("click", function(){
+    map.openInfoWindow(infoWindow,point); //开启信息窗口
+    // });
+</script>
+
+<style>
+.titles{
+    color: #543611;
+    font-size: 19px;
+    background: #eae7de;
+    margin-right: 10px;
+}
+.vew{
+    width: 92%;
+    margin: auto;
+}
+ .vew ul{
+     margin-top: 15px;
+}
+.vew ul li{
+    margin-bottom: 25px;
+}
+</style>
+
+<div class="vew">
+    <ul>
+        <li><span class="titles">医院地址：</span><span style="font-size: 16px;">{if !empty($data.address)}{$data.address}{/if}</span></li>
+        <li><span class="titles">官方座机：</span><span style="font-size: 16px;"><a href="tel:{$data.recruit->recruit_phone}" style="font-size: 16px; color: #bdb093;">{$data.recruit->recruit_phone}</a></span></li>
+        <li><span class="titles">邮箱：</span><span style="font-size: 16px;">{$data.recruit->recruit_email}</span></li>
+        <li><span class="titles">公交路线：</span><span style="font-size: 16px;">{if !empty($data.bus)}{$data.bus}{/if}</span></li>
+        <li><span class="titles">应聘地址：</span><span style="font-size: 16px;"> {$data.recruit->recruit_address}</span></li>
+        <li><span class="titles">医院官网地址：</span ><a href="huamei.jqzxyy.com" style="font-size: 16px; color: #bdb093;">huamei.jqzxyy.com</a><span></span></li>
+
+        <li><span class="titles">24小时在线客服：</span><span>
+                {if !empty($data.tel)}
+                {volist name="data.tel" id="vo" key="k" }
+            <a href="tel:{$vo}" style="font-size: 16px; color: #bdb093;">{$vo}</a>
+                {/volist}
+                {/if}
+        </span></li>
+    </ul>
+
+</div>
+
+
+
+<script src="/static/index/js/footer.js" ></script>

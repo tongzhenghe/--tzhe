@@ -1,0 +1,15 @@
+<script>
+
+    layui.use(['form'], function() {
+        var form = layui.form,
+            $ = layui.jquery;
+        form.render();
+
+        //menu
+        form.on('submit(formDemo)', function(data) {
+            $.fn.repost($("input[name='requestUrl']").val(), data.field);
+        });
+
+    });
+
+</script>

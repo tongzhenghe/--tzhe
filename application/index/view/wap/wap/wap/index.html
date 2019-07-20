@@ -1,0 +1,454 @@
+{include file="../application/index/view/wap/wap/include/header.html" /}
+<div id="index_content">
+    <div id="index_banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!--banner-->
+                {if !empty($banner)}
+                {volist name="banner" id="vo" key="k" }
+                <div class="swiper-slide">
+                    <a href="{if !empty($vo.out_url)}{$vo.out_url}{else}javascript:void(0){/if}" {if empty($vo.out_url)} onClick="bscnym();return false" {/if}>
+                    <img src="{$vo.img}">
+                    </a>
+                </div>
+                {/volist}
+                {/if}
+                <!--banner-->
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+
+    <div id="index_type">
+
+        <div id="index_recommend">
+            <div id="index_recommend_box">
+                <ul>
+                    {if !empty($goods)}
+                    {volist name="goods" id="vo" key="k" }
+                    <li>
+                        <a href="javascript:;" onClick="bscnym();return false;"><img src="{$vo.icon}"></a>
+                    </li>
+                    {/volist}
+                    {/if}
+                </ul>
+            </div>
+        </div>
+        <div id="index_type_box">
+            <ul>
+                <!--服务项目-->
+                {if !empty($prot)}
+                {volist name="prot" id="vo" key="k" }
+                <li>
+                    <a href="" onClick="bscnym();return false;">
+                        <p><img src="{if !empty($vo.icon)}{$vo.icon}{/if}"></p>
+                    </a>
+                </li>
+                {/volist}
+                {/if}
+                <!--更多-->
+                <li> <a href="{:url('/wap/project')}"><img src="/static/index/icon/index-ite-more.png"></a></li>
+                <!--服务项目-End-->
+            </ul>
+        </div>
+    </div>
+
+    <div id="index_broadcast">
+        <div id="index_broadcast_title"></div>
+        <div id="index_broadcast_msg">
+            <div class="index_broadcast_msg" id="index_broadcast_msg_1" style="top: -5px; position: inherit;">
+                <img class="data_s" style=" width: 9.3%; float: left;  margin-left: 4%;" d_src="/static/index/icon/laba.png" src="/static/index/icon/laba.png">
+                <div class="index_broadcast_msg" id="index_broadcast_msg_1 index_broadcast_msg_2" style="width: 1px;">
+                    <div class="swiper-container swiper-containerhot"  style="    width: 80%;  margin-top: 15px;">
+                        <div class="swiper-wrapper">
+                            {if !empty($ask)}
+                            {volist name="ask" id="vo" key="k" }
+                            <div class="swiper-slide"><a href="{:url('/wap/aski', ['id' => $vo.id])}"><li>{$vo.name}</li></a></div>
+                            {/volist}
+                            {/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="more"> <a href="{:url('/wap/askl')}" style="color: #fef9ff;">更多</a></div>
+    </div>
+
+    <script>
+        var swiper222 = new Swiper('.swiper-containerhot', {
+            direction: 'vertical',
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: true,
+            },
+            pagination: {
+                el: '.swiper-paginationhot',
+                clickable: true,
+            },
+        });
+    </script>
+
+    <!--特价优惠-->
+
+    <style>
+        .pilist{
+            width: 147.667px!important;
+        }
+        .doclist{
+            width: 176px!important;}
+
+    </style>
+    <div id="index_yh">
+        <div id="index_yh_list_box_2">
+            <div class="box_title"><i></i>特价优惠</div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper" style="">
+
+                    {if !empty($goods_d)}
+                    {volist name="goods_d" id="vo" key="k" }
+                    <div class="swiper-slide pilist">
+                        <li>
+                            <img src="{$vo.icon}" style="height: 92px;">
+                            <b>{$vo.name}</b><br/>
+                            <span>￥</span><span>{$vo.price}元</span>
+                            <div class="one_btn_div"><a href="javascript:;" onclick="bscnym();return false;" class="one_btn">咨询详情</a></div>
+                        </li>
+                    </div>
+                    {/volist}
+                    {/if}
+                </div>
+            </div>
+            <!--<div class="swiper-pagination"></div>-->
+        </div>
+    </div>
+    <!--特价优惠-End-->
+
+    <div id="index_yh_list">
+        <div class="ys_bt">华美专家团队介绍  <a href="{:url('/wap/docl')}" class="box_btn2">></a></div>
+        <div id="index_yh_list_box">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {if !empty($doc)}
+                    {volist name="doc" id="vo" key="k" }
+                    <div class="swiper-slide doclist">
+                        <li>
+                            <img src="{$vo.img}" height="200">
+                            <div class="doc_div">
+                                <div class="piclist_zi">
+                                    <b style="font-size:14px;">{$vo.name}/</b><span style="font-size:11px;">{$vo.position}</span>
+                                    <p style="font-size:12px;"><span style="color: #6b4709; font-weight: 700;">擅长:</span>
+                                        {volist name="vo.be_expert_in" id="voe" key="ke" }
+                                        {if count($vo.be_expert_in) > 2}{$voe}..{/if}<br>
+                                        {/volist}
+                                    </p>
+                                </div>
+                                <div class="one_btn_div"><a href="{:url('/wap/doci',['id' => $vo.id])}" class="one_btn">详细了解</a></div>
+                            </div>
+                        </li>
+                    </div>
+                    {/volist}
+                    {/if}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--真人秀-->
+    <div class="part" id="diebian">
+        <div class="bg12">
+            <div class="top_t">
+                <h1 class="h1_tit"><b>&华美  美例蜕变</b></h1>
+                <div class="r_tips more"><a href="{:url('/wap/real_showl')}">+查看更多</a></div>
+            </div>
+            <div class="tab_wrap" id="diebian_tab_wrap">
+                <div class="swiper_container gallery_nav">
+                    <div class="swiper-wrapper">
+                        {if !empty($real_show)}
+                        {volist name="real_show" id="vo" key="k" }
+                        <div class="swiper-slide">{$vo.name}</div>
+                        {/volist}
+                        {/if}
+                    </div>
+                </div>
+                <div class="swiper_container gallery_con">
+                    <div class="swiper-wrapper">
+                        {if !empty($real_show)}
+                        {volist name="real_show" id="vo" key="k" }
+                        {if !empty($vo.children)}
+                        {volist name="vo.children" id="vc" key="kc" }
+                        <div class="swiper-slide">
+                            <div class="main_jour">
+                                <div class="jour_name flex">
+                                    <div class="jour_icon"><img src="/static/index/img/zhenr.jpg" alt=""></div>
+                                    <div class="info">酒泉华美</div>
+                                </div>
+                                <ul class="jour_pic flex">
+                                    <!--术前-->
+                                    <li>
+                                        <a href="javascript:void(0)" onclick="bscnym();return false;" target="_blank">
+                                            <img src="{$vc.icon}" alt="">
+                                            <!-- <em>Before</em> -->
+                                        </a>
+                                    </li>
+                                    <!--术后-->
+                                    <li>
+                                        <a href="javascript:void(0)" onclick="bscnym();return false;" target="_blank">
+                                            <img src="{$vc.img}" alt="">
+                                            <!-- <em>After</em> -->
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="jour_text">
+                                    <a href="javascript:void(0)" onclick="bscnym();return false;" target="_blank">
+                                        <p>{$vc.intro}</p>
+                                    </a>
+                                </div>
+                                <div class="jour_other flex">
+                                    <div class="icon icon_shuqian">{$vc.name}</div>
+                                </div>
+                            </div>
+                        </div>
+                        {/volist}
+                        {/if}
+                        {/volist}
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn btn_go btn_icon"><a href="{:url('/wap/real_showl')}"><span>点击了解更多</span></a></div>
+    </div>
+    <!--真人秀-END-->
+
+    <link href="/static/index/css/swiper.min.css"  type="text/css"/>
+    <script src="/static/index/js/swiper.min.js"></script>
+
+    <script>
+        var galleryTop = new Swiper('#diebian_tab_wrap .gallery_con', {
+            spaceBetween: 10,
+            slidesPerView:1,
+            allowTouchMove: true,
+            loop:true,
+            speed:500,
+            loopedSlides:10
+        });
+        var galleryThumbs = new Swiper('#diebian_tab_wrap .gallery_nav', {
+            spaceBetween: 10,
+            slidesPerView:'auto',
+            loop: true,
+            speed:500,
+            loopedSlides:10,
+            slideToClickedSlide: true
+        });
+        galleryTop.controller.control = galleryThumbs;
+        galleryThumbs.controller.control = galleryTop;
+
+    </script>
+
+    <div class="part" id="meipai">
+        <div class="bg12">
+            <div class="top_t">
+                <h1 class="h1_tit"><b>&华美  造美瞬间</b></h1>
+            </div>
+            <div class="con_wrap">
+
+                <div class="con_flex flex flex1">
+                    <div class="con video">
+                        <img class="img_bg" src="http://huamei.juhuiny.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190513110219.jpg" alt="<?=$video[0]['path'];?>">
+                        <div class="mask">
+                            <div class="pop">
+                                <div class="btn_video"></div>
+                                <p><?=$video[0]['name'];?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="con_flex flex flex2">
+                    <div class="con video">
+                        <img class="img_bg" src="http://huamei.juhuiny.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190513110219.jpg" alt="<?=$video[1]['path'];?>">
+                        <div class="mask">
+                            <div class="pop">
+                                <div class="btn_video"></div>
+                                <p><?=$video[1]['name'];?></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="con video">
+                        <img class="img_bg" src="http://huamei.juhuiny.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190513110219.jpg" alt="<?=$video[2]['path'];?>">
+                        <div class="mask">
+                            <div class="pop">
+                                <div class="btn_video"></div>
+                                <p><?=$video[2]['name'];?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn btn_go btn_icon"><a href="javascript:void(0)"  onclick="bscnym();return false;" target="_blank"><span>更多视频</span></a></div>
+            </div>
+        </div>
+        <div id="video_pop">
+            <div class="v_close"></div>
+        </div>
+    </div>
+
+    <style>
+        .zaixian {
+            display: none !important;
+        }
+
+        #footer {
+            margin-bottom: 0 !important;
+            display: none !important;
+        }
+
+        .sec05_con ul li i {
+            padding-top: 89%;
+            width: 100px;
+            height: 120px;
+            display: block;
+        }
+        #about_con1 i{background: url("/static/index/icon/1.png") no-repeat left 0px; background-size: 100%;}
+        #about_con1 i:hover{background: url("/static/index/icon/1.png") no-repeat left -432px; background-size: 100%;}
+        #about_con2 i{background: url("/static/index/icon/1.png") no-repeat left -1162px; background-size: 100%;}
+
+        #about_con2 i:hover{background: url("/static/index/icon/1.png") no-repeat left -1307px; background-size: 100%;}
+
+        #about_con3 i{background: url("/static/index/icon/1.png") no-repeat left -868px; background-size: 100%;}
+        #about_con3 i:hover{background: url("/static/index/icon/1.png") no-repeat left -1015px; background-size: 100%;}
+      .data_s{
+         width: 100%;
+        display: block;
+      }
+
+    </style>
+    <section id="sections">
+        <section class="sec05" style="overflow: -webkit-paged-x;">
+            <div class="sec05_con">
+                <ul class="slide_nav clearfix">
+                    <li class="cur_active" id="about_con1"><i></i><span>关于华美</span></li>
+                    <li id="about_con2"><i></i><span>先进设备</span></li>
+                    <li id="about_con3"><i></i><span>荣誉资质</span></li>
+                </ul>
+                <ul class="sec05_item">
+                    <li class="cur_active">
+                        <div class="swiper-container">
+                            <div class="con video">
+                                <img class="img_bg" src="http://huamei.juhuiny.com/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190513175513.png" alt="http://huamei.juhuiny.com/%E5%8D%8E%E7%BE%8E%E6%AD%A3%E5%BC%8F%E7%89%883.15.mp4">
+                                <div class="mask" style="height: 86%;">
+                                    <div class="pop">
+                                        <div class="btn_video"style="width: 2.5rem;height: 2.5rem; margin: 0 auto;background: url(/static/index/img/btn_icon_video.png) no-repeat;background-size: 100%;"></div>
+                                        <p style="font-size: 15px">酒泉华美医疗美容医院</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="swiper-container2">
+                            <div class="swiper-container1" style="background: white;height: 227px;">
+
+                                {if !empty($sb)}
+                                {volist name="sb" id="vo" key="k" }
+                                <img style="width: 92%; margin: auto; border: 1px solid #c4b79c9e; padding: 1px;border-radius: 9px; height: 224px;" src="{$vo.img}">
+                                {/volist}
+                                {/if}
+                            </div>
+                        </div>
+                    </li>
+
+                      <li>
+                        <div class="swiper-container3">
+                            <div class="swiper-container1" style="background: white;height: 227px;">
+                                <img style="width: 92%; margin: auto; border: 1px solid #c4b79c9e; padding: 1px;border-radius: 9px; height: 224px;" src="http://huamei.juhuiny.com/zizhi4.jpg">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <script>
+            TouchSlide({ slideCell: "#sec05", titCell: ".slide_nav li", autoPlay: false, effect: 'left' });
+            $('.sec05 .slide_nav li').click(function () {
+                $(this).addClass('cur_active').siblings('li').removeClass('cur_active');
+                $('.sec05 .sec05_item li').eq($(this).index()).addClass('cur_active').siblings('li').removeClass('cur_active');
+            });
+            var swiper = new Swiper('.sec05_item .swiper-container', {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                pagination: {
+                    el: '.sec05_item .swiper-pagination',
+                    clickable: true,
+                },
+
+            });
+            var swiper = new Swiper('.sec05_item .swiper-container1', {
+                slidesPerView: 2, slidesPerGroup: 2,
+                pagination: {
+                    el: '.sec05_item .swiper-pagination1',
+                    clickable: true,
+                },
+
+            });
+            var swiper = new Swiper('.sec05_item .swiper-container2', {
+                slidesPerView: 2, slidesPerGroup: 2,
+                pagination: {
+                    el: '.sec05_item .swiper-pagination2',
+                    clickable: true,
+                },
+
+            });
+            var swiper = new Swiper('.sec05_item .swiper-container3', {
+                slidesPerView: 2, slidesPerGroup: 2,
+                pagination: {
+                    el: '.sec05_item .swiper-pagination3',
+                    clickable: true,
+                },
+            });
+        </script>
+    </section>
+    <style>
+        .sec_title{
+            width: 70%;
+            text-align: center;
+            margin: auto;
+        }
+
+       .sec_title:first-child p {
+            color: white;
+            font-size: 25px;
+            font-family: cursive;
+            font-weight: 700;
+        }
+    </style>
+
+    <section id="sections" style="margin-top: -34px;background: #4a3418;">
+        <section class="sec11">
+            <div class="sec_title"><p>公益我们一直在路上</p><p style="font-size: 15px;">从未停止，</p></div>
+            <div class="sec11_con">
+                <section id="sec11" class="slide_common">
+                    <ul class="slide_nav clearfix">
+                        <li>2012年 <img src="/static/index/testimg/sec11_icon[1].png" /></li>
+                        <li>2013年<img src="/static/index/testimg/sec11_icon[1].png" /></li>
+                        <li>2014年<img src="/static/index/testimg/sec11_icon[1].png" /></li>
+                        <li>2015年<img src="/static/index/testimg/sec11_icon[1].png" /></li>
+                        <li>2016年<img src="/static/index/testimg/sec11_icon[1].png" /></li>
+                    </ul>
+                    <ul class="slide_container">
+                        {if !empty($gy)}
+                        {volist name="gy" id="vo" key="k" }
+                        <li><img src="<?=$vo['img'];?>" /></li>
+                        {/volist}
+                        {/if}
+                    </ul>
+                </section>
+            </div>
+        </section>
+{include file="../application/index/view/wap/wap/include/footer.html" /}
+
+<script src="/static/index/js/footer.js" ></script>
+<style>#footTool{display:none;}</style>

@@ -1,0 +1,90 @@
+<!-- 模板 -->
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-card">
+            <div class="layui-card-header">
+
+            <span class="layui-breadcrumb">
+              <i>当前位置：</i>
+            <a href="/">首页</a>
+            <a href="#/website/activity_cate">列表</a>
+            <a><cite>添加分类</cite></a>
+          </span>
+
+            </div>
+            <div class="layui-card-body">
+                <form class="layui-form" action="##" onsubmit="return false">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" lay-verify="required" value="{if !empty($row.name)}{$row.name}{/if}" placeholder="分类名称" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">icon</label>
+                        <div class="layui-input-block">
+                            <a href="javascript:;">
+                                <i class="layui-icon layui-icon-picture upload1"></i>
+                            </a>
+                            <div class="layui-inline layui-word-aux">
+                                提示：请上传（25*25大小图标）， 限制大小：8kb。
+                            </div>
+                            <img id="imgdemo1" src="{if !empty($row.icon)}{$row.icon}{/if}" class="imgdemo1" width="50px">
+                            <a href="javascript:;" class="d del-icon1"><span>x</span></a>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="boll">
+                            <label class="layui-form-label">是否推荐</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox"  {if (!empty($row.is_tj)) &&  $row.is_tj == 1} checked {/if} name="is_tj" title="推荐分类">
+                            </div>
+                            <p class="layui-word-aux">注意：如未设置， 默认为（否）。</p>
+                        </div>
+                        <div class="boll">
+                            <label class="layui-form-label">是否热门</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox"  {if (!empty($row.is_tj)) &&   $row.is_hot == 1} checked {/if} name="	is_hot" title="设置热门">
+                            </div>
+                            <p class="layui-word-aux">注意：如未设置， 默认为（否）。</p>
+                        </div>
+                        <div class="boll">
+                            <label class="layui-form-label">是否最新</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox"  {if (!empty($row.is_tj)) &&   $row.is_new == 1} checked {/if}  name="	is_new" title="设置最新分类">
+                            </div>
+                            <p class="layui-word-aux">注意：如未设置， 默认为（否）。</p>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">选择类别</label>
+                        <div class="layui-input-block">
+                            <select name="pid" lay-verify="required">
+                                <option value="0">顶级分类</option>
+                                {if !empty($activity_cate)}
+                                {volist name="activity_cate" id="v" key="k" }
+                                <option value="{$v.id}" {if !empty($row) && $row.pid == $v.id} selected {/if}>{if !empty($v.html)}{$v.html}{/if}{$v.name}</option>
+                                {/volist}
+                                {/if}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="hidden" name="requestUrl" value="{:url('addactivity_cate')}">
+                            <input type="hidden" name="id" value="{if !empty($row.id)}{$row.id}{/if}">
+                            <button class="layui-btn xxx" lay-submit lay-filter="formActivity_cate">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            <a href="#/website/activity_cate" class="layui-btn layui-btn-primary">返回列表</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 脚本 -->
+{js href='/static/admin/layui_rely.js'}
+{include file="include/submit" /}

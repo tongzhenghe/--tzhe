@@ -1,0 +1,68 @@
+<!-- 模板 -->
+<div class="layui-fluid">
+  <div class="layui-row">
+      <div class="layui-card">
+        <div class="layui-card-header">
+            <span class="layui-breadcrumb">
+              <i>当前位置：</i>
+            <a href="/">首页</a>
+            <a href="#/website/video">列表</a>
+            <a><cite>添加视频</cite></a>
+          </span>
+        </div>
+        <div class="layui-card-body">
+          <form class="layui-form" action="##" onsubmit="return false" >
+              <div class="layui-form-item" pane="">
+                  <label class="layui-form-label">展示平台<i>*</i></label>
+                  <div class="layui-input-block">
+                      <input type="radio" name="is_mobile" value="1" {if !empty($row.is_mobile) && $row.is_mobile == 1} checked {/if} title="移动">
+                      <input type="radio" name="is_mobile" value="2" {if !empty($row.is_mobile) && $row.is_mobile == 2} checked {/if} title="PC">
+                  </div>
+              </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">顺序</label>
+              <div class="layui-input-block">
+                <input type="number" name="sort"  value="{if !empty($row.sort)}{$row.sort}{/if}" placeholder="顺序" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+           <div class="layui-form-item">
+               <label class="layui-form-label">名称<i>*</i></label>
+              <div class="layui-input-block">
+                <input type="text" name="name"  value="{if !empty($row.name)}{$row.name}{/if}" placeholder="视频名称" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+
+              <div class="layui-form-item">
+                  <label class="layui-form-label">宣传视频</label>
+                  <div class="layui-input-block">
+                      <a href="javascript:;">
+                          <i class="layui-icon layui-icon-video uploadVideo"></i>
+                      </a>
+                      <div class="layui-inline layui-word-aux">提示: 限制大小：15M, 文件太大可能会导致浏览器无法播放。</div>
+                      点击预览:<a style="color: #36aaff;" class="videoDemo" href="{if !empty($row.path)}{$row.path}{else}javascript:;{/if}" target="_blank">{if !empty($row.path)}{$row.path}{/if}</a>
+                  </div>
+              </div>
+
+              <div class="layui-form-item">
+              <label class="layui-form-label">是否推荐</label>
+              <div class="layui-input-block">
+                  <input type="checkbox"  {if (!empty($row.is_tj)) &&  $row.is_tj == 1} checked {/if} name="is_tj" title="推荐">
+              </div>
+              </div>
+
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                  <input type="hidden" name="id"  value="{if !empty($row.id)}{$row.id}{/if}">
+                <button class="layui-btn xxx" lay-submit lay-filter="formVideo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <a href="#/website/video" class="layui-btn layui-btn-primary">返回列表</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>
+<!-- 脚本 -->
+{js href='/static/admin/layui_rely.js'}
+{include file="include/submit" /}

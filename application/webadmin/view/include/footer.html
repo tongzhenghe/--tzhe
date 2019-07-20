@@ -1,0 +1,28 @@
+<div class="layui-footer" kit-footer="true">
+  酒泉华美医疗美容医院
+    <div style="width:400px; height:400px;" class="load-container load1">
+        <div class="loader">Loading...</div>
+    </div>
+</div>
+</div>
+{js href='/static/admin/js/jquery-3.3.1.min.js'}
+{js href='/static/admin/layui/polyfill.min.js'}
+{js href='/static/admin/layui/layui.js'}
+{js href='/static/admin/layui/kitadmin.js'}
+{js href='/static/admin/layui/mockjs-config.js'}
+{js href='/static/admin/layui/css/theme/default.css'}
+{js href='https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js'}
+
+<!--uedior-->
+<script type="text/javascript" charset="utf-8" src="/static/admin/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/admin/ueditor/ueditor.all.min.js"> </script>
+<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+<script type="text/javascript" charset="utf-8" src="/static/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+<!--uedior-->
+
+<script>layui.use("admin");</script>
+{js href='/static/admin/js/ownjs.js'}
+<!--{js href='http://www.jq22.com/demo/BeginnerAdmin201701192304/lay/modules/jquery.js'}-->
+</body>
+</html>

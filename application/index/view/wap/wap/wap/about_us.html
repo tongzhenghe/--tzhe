@@ -1,0 +1,22 @@
+{include file="../application/index/view/wap/wap/include/header.html" /}
+    <div class="categoryMenu main">
+        <ul class="Menu">
+            <li class="Menu1"><a href="/wap/index">首页</a></li>
+            <li class="Menu2"><a href="{:url('/wap/about_us')}">华美品牌</a></li>
+            <li class="Menu3"><a href="{:url('/wap/project')}">项目</a></li>
+            <li class="Menu4"><a href="{:url('/wap/docl')}">专家</a></li>
+            <li class="Menu5"><a href="{:url('/wap/real_showl')}">案例</a></li>
+            <li class="Menu6"><a href="{:url('/wap/contact')}">来院路线</a></li>
+        </ul>
+</div>
+<div id="index_hm_text">
+    <label class="con1_bt">酒泉华美医疗美容医院</label>
+    <label class="con1_nr kj" id="intro">
+        <span><a href="/wap/index">酒泉华美 @ </a></span><span ><a href="{if !empty($web_setting.bscnym_path)}{$web_setting.bscnym_path}{/if}">客服在线 @ </a></span><span><a href="tel:0937-2620655">一键咨询</a></span>
+    </label>
+    <label class="con1_nr" id="con1_id">
+      {if !empty($data.intro)}{$data.intro}{/if}
+    </label>
+    <hr>
+</div>
+<script src="/static/index/js/footer.js" ></script>

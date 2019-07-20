@@ -1,0 +1,99 @@
+<!-- 模板 -->
+<div class="layui-fluid">
+  <div class="layui-row">
+      <div class="layui-card">
+        <div class="layui-card-header">
+            <span class="layui-breadcrumb">
+              <i>当前位置：</i>
+            <a href="/">首页</a>
+            <a href="#/website/user">列表</a>
+            <a><cite>添加管理员</cite></a>
+          </span>
+        </div>
+        <div class="layui-card-body">
+          <form class="layui-form" action="##" onsubmit="return false" >
+            <div class="layui-form-item">
+              <label class="layui-form-label">管理员真实姓名</label>
+              <div class="layui-input-block">
+                <input type="text" name="pername"  value="{if !empty($row.pername)}{$row.pername}{/if}" placeholder="管理员姓名" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">登陆用户名</label>
+              <div class="layui-input-block">
+                <input type="text" name="username"  value="{if !empty($row.username)}{$row.username}{/if}" placeholder="登陆用户名" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+
+           <div class="layui-form-item">
+              <label class="layui-form-label">登陆密码</label>
+              <div class="layui-input-block">
+                <input type="password" name="password"  placeholder="管理员链接" autocomplete="off" class="layui-input">
+                  <!--<p class="layui-word-aux">注意： 如未填写链接则默认为：（javascript:;）。</p>-->
+              </div>
+            </div>
+
+              <div class="layui-form-item">
+                  <label class="layui-form-label">确认密码</label>
+                  <div class="layui-input-block">
+                     <input type="password" name="repassword"  placeholder="确认密码" autocomplete="off" class="layui-input">
+                  <!--<p class="layui-word-aux">注意： 如未填写链接则默认为：（javascript:;）。</p>-->
+              </div>
+            </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">模块权限</label>
+                  <div class="layui-input-block">
+                      <ul id="demo2" class="layui-box layui-tree layui-show">
+                          {if !empty($menu)}
+                          {volist name="menu" id="v" key="k" }
+                          <li>
+                              <input type="checkbox" name="like1[game]" lay-skin="primary">
+                              <a href="javascript:;"><cite class="top">{$v.name}</cite></a>
+                              <ul class="layui-show">
+                                  {if !empty($v.children)}
+                                  {volist name="v.children" id="vc" key="kc" }
+                                  <li>
+                                      <input type="checkbox" name="like1[game]" lay-skin="primary">
+                                      <a href="javascript:;">
+                                          <cite>{$vc.name}</cite></a>
+                                      <ul class="layui-show">
+                                          {if !empty($vc.children)}
+                                          {volist name="vc.children" id="vs" key="ks" }
+                                          <li>
+                                              <input type="checkbox" name="like1[game]" lay-skin="primary">
+                                              <a href="javascript:;">
+                                                  <cite>{$vs.name}</cite>
+                                              </a>
+                                          </li>
+                                          {/volist}
+                                          {/if}
+                                      </ul>
+                                  </li>
+                                  {/volist}
+                                  {/if}
+                              </ul>
+                          </li>
+                          {/volist}
+                          {/if}
+                      </ul>
+              </div>
+              </div>
+
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                  <input type="hidden" name="requestUrl"  value="{:url('adduser')}">
+                  <input type="hidden" name="id"  value="{if !empty($row.id)}{$row.id}{/if}">
+                <button class="layui-btn xxx" lay-submit lay-filter="formUser">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <a href="#/website/user" class="layui-btn layui-btn-primary">返回列表</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+</div>
+<!-- 脚本 -->
+{js href='/static/admin/layui_rely.js'}
+{include file="include/submit" /}

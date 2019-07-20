@@ -1,0 +1,332 @@
+<style>
+    .layui-table-view{
+        height: 100%!important;
+    }
+    .layui-table-main{
+        height: 100%!important;
+    }
+    .layui-table{    height: 100%!important;}
+</style>
+<div class="layui-fluid">
+  <div class="layui-row">
+    <div class="layui-col-xs12">
+      <div class="layui-card">
+          <blockquote class="layui-elem-quote">
+              <span class="layui-breadcrumb">
+                    <a href="/">首页</a>
+                    <a><cite>活动列表</cite></a>
+              </span>
+          </blockquote>
+
+        <div class="layui-card-header">
+          <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+              <li class="layui-this">PC</li>
+              <li>移动端</li>
+            </ul>
+            <div class="layui-tab-content">
+              <div class="layui-tab-item layui-show">
+
+                  <div class="layui-card-body">
+                      <div class="layui-card-header">
+                      <a href="#/website/addactivity" class="layui-btn layui-btn-xs">
+                          <i class="layui-icon">&#xe654;</i>
+                          <span>新增活动</span>
+                      </a>
+                      <a href="#/website/collection" class="layui-btn layui-btn-xs">
+                      <i class="layui-icon">&#xe640;</i>
+                      <span>回收站</span>
+                      </a>
+                      <a href="javascript:;" class="layui-btn layui-btn-xs layui-btn-primary" id="search_hash">
+                          <i class="layui-icon">&#xe615;</i>
+                      </a>
+                      </div>
+                      <div class="layui-card-body" style="top: 10px;">
+                          <table lay-filter="demo"  lay-data="{height:315, page:true, id:'test'}" >
+                              <thead>
+                              <tr>
+                                  <th lay-data="{field:'id', width:100, sort:true}">(编号id)</th>
+                                  <th lay-data="{field:'sort', width:100, sort:true}">顺序</th>
+                                  <th lay-data="{field:'name', width:100}">活动名称</th>
+                                  <th lay-data="{field:'img', width:100}">图片</th>
+                                  <th lay-data="{field:'out_url', width:100}">跳转链接</th>
+                                  <th lay-data="{field:'intro', width:100}">简介</th>
+                                  <th lay-data="{field:'state', width:100}">状态</th>
+                                  <th lay-data="{field:'is_tj', width:100}">是否推荐</th>
+                                  <th lay-data="{field:'is_new', width:100}">是否最新</th>
+                                  <th lay-data="{field:'is_hot', width:100}">是否最热</th>
+                                  <th lay-data="{field:'操作', width:80}">操作</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {if !empty($activity)}
+                              {volist name="activity" id="v" key="k" }
+                              {if $v.is_mobile == 2}
+                              <tr>
+                                  <td>{$v.id}</td>
+                                  <td>{$v.sort}</td>
+                                  <td>{$v.name}</td>
+                                  <td><img src="{$v.img}" width="20px" onclick="$.fn.preview(this)"/></td>
+                                  <td>{$v.out_url}</td>
+                                  <td>{$v.intro}</td>
+
+                                  <td>
+                                  {if $v.state == 1}
+                                  <a href="javascript:;">
+                                      <div class="layui-input-block" style="margin-left:unset;">
+                                          <input type="checkbox" checked="" data-do="_state"   name="open" lay-skin="switch" data-field="state" data-ids="{$v.id}" data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  lay-text="正常|禁用">
+                                      </div>
+                                  </a>
+                                  {else}
+                                  <a href="javascript:;">
+                                      <div class="layui-input-block"  style="margin-left:unset;">
+                                          <input type="checkbox"  data-do="_state" data-field="state" data-ids="{$v.id}"  data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  name="close" lay-skin="switch"  lay-text="正常|禁用">
+                                      </div>
+                                  </a>
+                                  {/if}
+                                  </td>
+                                  <td>
+                                  {if $v.is_tj == 1}
+                                  <a href="javascript:;">
+                                      <div class="layui-input-block" style="margin-left:unset;">
+                                          <input type="checkbox" checked="" data-do="_state"   name="open" lay-skin="switch" data-field="is_tj" data-ids="{$v.id}" data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  lay-text="推荐|不推荐">
+                                      </div>
+                                  </a>
+                                  {else}
+                                  <a href="javascript:;">
+                                      <div class="layui-input-block"  style="margin-left:unset;">
+                                          <input type="checkbox"  data-do="_state" data-field="is_tj" data-ids="{$v.id}"  data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  name="close" lay-skin="switch"  lay-text="推荐|不推荐">
+                                      </div>
+                                  </a>
+                                  {/if}
+                                  </td>
+
+                                  <td>
+                                  {if $v.is_new == 1}
+                                  <a href="javascript:;">
+                                      <div class="layui-input-block" style="margin-left:unset;">
+                                          <input type="checkbox" checked="" data-do="_state"   name="open" lay-skin="switch" data-field="is_new" data-ids="{$v.id}" data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  lay-text="是|否">
+                                      </div>
+                                  </a>
+                                  {else}
+                                  <a href="javascript:;">
+                                      <div class="layui-input-block"  style="margin-left:unset;">
+                                          <input type="checkbox"  data-do="_state" data-field="is_new" data-ids="{$v.id}"  data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  name="close" lay-skin="switch"  lay-text="是|否">
+                                      </div>
+                                  </a>
+                                  {/if}
+                                  </td>
+
+                                 <td>
+                                  {if $v.is_hot == 1}
+                                  <a href="javascript:;">
+                                      <div class="layui-input-block" style="margin-left:unset;">
+                                          <input type="checkbox" checked="" data-do="_state"   name="open" lay-skin="switch" data-field="is_hot" data-ids="{$v.id}" data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  lay-text="是|否">
+                                      </div>
+                                  </a>
+                                  {else}
+                                  <a href="javascript:;">
+                                      <div class="layui-input-block"  style="margin-left:unset;">
+                                          <input type="checkbox"  data-do="_state" data-field="is_hot" data-ids="{$v.id}"  data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  name="close" lay-skin="switch"  lay-text="是|否">
+                                      </div>
+                                  </a>
+                                  {/if}
+                                  </td>
+
+
+                                  <td>
+                                      <a href="#/website/addactivity?id={$v.id}" class="point"><i class="layui-icon" title="编辑数据">&#xe642;</i></a>
+                                      <a href="javascript:;" data-ids="{$v.id}" data-url="{:url('index/activity')}" id="delActivity"><i  class="layui-icon" title="删除数据">&#xe640;</i></a>
+                                  </td>
+                              </tr>
+                              {/if}
+                              {/volist}
+                              {/if}
+                              </tbody>
+                          </table>
+                          <script type="text/html" id="barDemo_hash">
+                              <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+                              <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                              <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                          </script>
+                      </div>
+                  </div>
+
+              </div>
+              <div class="layui-tab-item">
+                  <div class="layui-card-body">
+                      <div class="layui-card-header">
+                          <a href="#/website/addactivity" class="layui-btn layui-btn-xs">
+                              <i class="layui-icon">&#xe654;</i>
+                              <span>新增活动</span>
+                          </a>
+                          <a href="#/website/collection" class="layui-btn layui-btn-xs">
+                              <i class="layui-icon">&#xe640;</i>
+                              <span>回收站</span>
+                          </a>
+                          <a href="javascript:;" class="layui-btn layui-btn-xs layui-btn-primary" id="search_hash">
+                              <i class="layui-icon">&#xe615;</i>
+                          </a>
+                      </div>
+                      <div class="layui-card-body" style="top: 10px;">
+                          <table lay-filter="demo"  lay-data="{height:315, page:true, id:'test'}" >
+                              <thead>
+                              <tr>
+                                  <th lay-data="{field:'id', width:100, sort:true}">(编号id)</th>
+                                  <th lay-data="{field:'sort', width:100, sort:true}">顺序</th>
+                                  <th lay-data="{field:'name', width:100}">活动名称</th>
+                                  <th lay-data="{field:'img', width:100}">图片</th>
+                                  <th lay-data="{field:'out_url', width:100}">跳转链接</th>
+                                  <th lay-data="{field:'intro', width:100}">简介</th>
+                                  <th lay-data="{field:'state', width:100}">状态</th>
+                                  <th lay-data="{field:'is_tj', width:100}">是否推荐</th>
+                                  <th lay-data="{field:'is_new', width:100}">是否最新</th>
+                                  <th lay-data="{field:'is_hot', width:100}">是否最热</th>
+                                  <th lay-data="{field:'操作', width:80}">操作</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {if !empty($activity)}
+                              {volist name="activity" id="v" key="k" }
+                              {if $v.is_mobile == 1}
+                              <tr>
+                                  <td>{$v.id}</td>
+                                  <td>{$v.sort}</td>
+                                  <td>{$v.name}</td>
+                                  <td><img src="{$v.img}" width="20px" onclick="$.fn.preview(this)"/></td>
+                                  <td>{$v.out_url}</td>
+                                  <td>{$v.intro}</td>
+
+                                  <td>
+                                      {if $v.state == 1}
+                                      <a href="javascript:;">
+                                          <div class="layui-input-block" style="margin-left:unset;">
+                                              <input type="checkbox" checked="" data-do="_state"   name="open" lay-skin="switch" data-field="state" data-ids="{$v.id}" data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  lay-text="正常|禁用">
+                                          </div>
+                                      </a>
+                                      {else}
+                                      <a href="javascript:;">
+                                          <div class="layui-input-block"  style="margin-left:unset;">
+                                              <input type="checkbox"  data-do="_state" data-field="state" data-ids="{$v.id}"  data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  name="close" lay-skin="switch"  lay-text="正常|禁用">
+                                          </div>
+                                      </a>
+                                      {/if}
+                                  </td>
+                                  <td>
+                                      {if $v.is_tj == 1}
+                                      <a href="javascript:;">
+                                          <div class="layui-input-block" style="margin-left:unset;">
+                                              <input type="checkbox" checked="" data-do="_state"   name="open" lay-skin="switch" data-field="is_tj" data-ids="{$v.id}" data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  lay-text="推荐|不推荐">
+                                          </div>
+                                      </a>
+                                      {else}
+                                      <a href="javascript:;">
+                                          <div class="layui-input-block"  style="margin-left:unset;">
+                                              <input type="checkbox"  data-do="_state" data-field="is_tj" data-ids="{$v.id}"  data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  name="close" lay-skin="switch"  lay-text="推荐|不推荐">
+                                          </div>
+                                      </a>
+                                      {/if}
+                                  </td>
+
+                                  <td>
+                                      {if $v.is_new == 1}
+                                      <a href="javascript:;">
+                                          <div class="layui-input-block" style="margin-left:unset;">
+                                              <input type="checkbox" checked="" data-do="_state"   name="open" lay-skin="switch" data-field="is_new" data-ids="{$v.id}" data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  lay-text="是|否">
+                                          </div>
+                                      </a>
+                                      {else}
+                                      <a href="javascript:;">
+                                          <div class="layui-input-block"  style="margin-left:unset;">
+                                              <input type="checkbox"  data-do="_state" data-field="is_new" data-ids="{$v.id}"  data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  name="close" lay-skin="switch"  lay-text="是|否">
+                                          </div>
+                                      </a>
+                                      {/if}
+                                  </td>
+
+                                  <td>
+                                      {if $v.is_hot == 1}
+                                      <a href="javascript:;">
+                                          <div class="layui-input-block" style="margin-left:unset;">
+                                              <input type="checkbox" checked="" data-do="_state"   name="open" lay-skin="switch" data-field="is_hot" data-ids="{$v.id}" data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  lay-text="是|否">
+                                          </div>
+                                      </a>
+                                      {else}
+                                      <a href="javascript:;">
+                                          <div class="layui-input-block"  style="margin-left:unset;">
+                                              <input type="checkbox"  data-do="_state" data-field="is_hot" data-ids="{$v.id}"  data-url="{:url('index/activity')}"  lay-filter="switchTest_hash"  name="close" lay-skin="switch"  lay-text="是|否">
+                                          </div>
+                                      </a>
+                                      {/if}
+                                  </td>
+
+                                  <td>
+                                      <a href="#/website/addactivity?id={$v.id}" class="point"><i class="layui-icon" title="编辑数据">&#xe642;</i></a>
+                                      <a href="javascript:;" data-ids="{$v.id}" data-url="{:url('index/activity')}" id="delActivity"><i  class="layui-icon" title="删除数据">&#xe640;</i></a>
+                                  </td>
+                              </tr>
+                              {/if}
+                              {/volist}
+                              {/if}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--索引表单-->
+<script type="text/html" id="search_tpl_hash">
+  <form class="layui-form" action="">
+    <div class="layui-form-item">
+      <label class="layui-form-label">活动名称/id/</label>
+      <div class="layui-input-block">
+        <input type="text" name="title" placeholder="请输入用户名.." autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">城市</label>
+      <div class="layui-input-block">
+        <select name="city">
+          <option value=""></option>
+          <option value="0">北京</option>
+          <option value="1">上海</option>
+          <option value="2">广州</option>
+          <option value="3">深圳</option>
+          <option value="4">杭州</option>
+        </select>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">是否禁用</label>
+      <div class="layui-input-block">
+        <input type="checkbox" name="switch" lay-skin="switch">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label">性别</label>
+      <div class="layui-input-block">
+        <input type="radio" name="sex" value="男" title="男">
+        <input type="radio" name="sex" value="女" title="女" checked>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="formDemo_hash"><i class="layui-icon">&#xe615;</i> 搜索</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+  </form>
+</script>
+
+<!--依赖-->
+{js href='/static/admin/layui_rely.js'}
+{include file="include/laytablejs" /}
+{include file="include/submit" /}

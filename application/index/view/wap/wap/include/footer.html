@@ -1,0 +1,77 @@
+<script>
+    var htmlb_over={
+        hide:function(){
+            $('html,body').height($(window).outerHeight()).css('overflow','hidden');
+        },
+        show:function(){
+            $('html,body').height('auto').css('overflow','auto');
+        }
+    };
+    $('.con.video .btn_video').on('click',function() {
+        var thisp=$(this).parents('.con.video');
+        var vid=thisp.find('.img_bg').attr('alt');
+        var source_i='<video id="show_vd" autoplay="autoplay" src='+vid+' width="100%" height="100%" loop="" controls=""></video>';
+        $('#video_pop').append(source_i);
+        $('#video_pop').before("<div id='pop_bg_mask'></div>");
+        var scrolltop=$(document).scrollTop();
+        $('#video_pop').show(function(){
+            htmlb_over.hide();
+            $('#video_pop .v_close').on('click',function(){
+                $('#video_pop video,#pop_bg_mask').remove();
+                $('#video_pop,#pop_bg_mask').hide();
+                htmlb_over.show();
+                $(document).scrollTop(scrolltop);
+            })
+        });
+    })
+</script>
+<script src="/static/index/js/TouchSlide.js"></script>
+<script>
+    TouchSlide({ slideCell: "#sec04", titCell: ".slide_nav li" });
+    TouchSlide({ slideCell: "#sec11", titCell: ".slide_nav li" });
+</script>
+</section>
+</div>
+<script src="/static/index/js/new_index.js"></script>
+<div class="bottomFooter"><a class="call_number" href="tel:0937-2620655"><img src="/static/index/icon/beauty_online.png" width="100%" height="auto"/></a>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <style type="text/css">
+            body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+            #allmap{width:100%;height:250px;}
+            p{margin-left:1px; font-size:14px;}
+            .BMap_bubble_title{    color: #9a9895;}
+        </style>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xAPZt5bLlso1HUOgtZxoKo4Y4SGZeiix"></script>
+        <title>酒泉华美医疗美容医院</title>
+    </head>
+    <body>
+    <div id="allmap"></div>
+    </body>
+    </html>
+
+<script type="text/javascript">
+
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(98.525093,39.750313);
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+    map.centerAndZoom(point, 15);
+    var opts = {
+        width : 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title : "酒泉华美医疗美容医院" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        // message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+    };
+    var infoWindow = new BMap.InfoWindow("<p style='font-size: 12px'>地址：甘肃省酒泉市肃州区东大街90号。 </p><p style='font-size: 12px'>联系我们：<a href='tel://0937-2620655' style='color: #a70000;'>0937-2620655</p>", opts);  // 创建信息窗口对象
+    // marker.addEventListener("click", function(){
+    map.openInfoWindow(infoWindow,point); //开启信息窗口
+    // });
+
+</script>
+</div>

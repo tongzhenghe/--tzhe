@@ -1,0 +1,12 @@
+Array
+(
+    [2019-07-16 11 : 14] => Array
+        (
+            [name] => banner_05.jpg
+            [type] => image/jpeg
+            [tmp_name] => /www/server/data/temp/phpgkkCvr
+            [error] => 0
+            [size] => 278105
+        )
+
+)
